@@ -1,5 +1,6 @@
 import * as __m43476 from 'react/jsx-runtime'
 import * as __m71645 from 'react'
+import { createPortal } from 'react-dom'
 import * as __m86297 from './m86297.js'
 import * as __m59255 from './m59255.js'
 import * as __m69872 from './m69872.js'
@@ -16,10 +17,7 @@ let d = 'ca5283ce-7783-4833-ab63-ebf34a66956c',
   p = {
     envelope: `${h}/envelope.webp`,
     reveal: `${h}/reveal.webp`,
-    couple: `${h}/couple.webp`,
-    formal: `${h}/formal.webp`,
-    steps: `${h}/steps.webp`,
-    moment2: `${h}/moment2.webp`,
+    moments: [1, 2, 3, 4].map((q) => `${h}/moment${q}.webp`),
     foil: `${h}/foil.webp`,
     floral: `${h}/floral.webp`,
   },
@@ -273,6 +271,26 @@ let N = (a) => Math.round(100 * a) / 100,
 @keyframes aa-pillsheen{0%{left:-60%}45%,100%{left:130%}}
 .aa-bob{animation:aa-bob 2.2s ease-in-out infinite}
 @keyframes aa-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+
+/* Our Moments: 3D carousel */
+.aa-mo{position:relative;width:100%;height:${w(94)};perspective:${w(170)};perspective-origin:50% 42%;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.aa-mo-card{position:absolute;left:50%;top:${w(2)};width:${w(60)};margin-left:${w(-30)};cursor:pointer;outline:none;transition:transform .85s cubic-bezier(.2,.8,.2,1),opacity .6s ease,filter .6s ease;will-change:transform,opacity}
+.aa-mo-card.drag{transition:opacity .6s ease,filter .6s ease}
+.aa-mo-frame{position:relative;padding:${w(0.9)};box-sizing:border-box;border-radius:${w(3.4)};background:linear-gradient(135deg,#a35a6c 0%,#f3cdd3 24%,#c98a96 48%,#fbe3e7 72%,#9c5668 100%);box-shadow:0 ${w(5)} ${w(8)} rgba(110,40,70,.38),0 ${w(0.6)} ${w(1.4)} rgba(110,40,70,.25);transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .18s ease-out}
+.aa-mo-mat{background:#fff8f9;padding:${w(1.6)};border-radius:${w(2.5)};box-shadow:inset 0 0 0 1px rgba(214,134,152,.5)}
+.aa-mo-mat img{display:block;width:100%;height:auto;border-radius:${w(1.4)};pointer-events:none}
+.aa-mo-frame .aa-shine{border-radius:${w(3.4)}}
+.aa-mo-floor{position:absolute;left:50%;bottom:${w(1)};width:${w(56)};height:${w(5)};margin-left:${w(-28)};background:radial-gradient(closest-side,rgba(110,40,70,.30),rgba(110,40,70,0));pointer-events:none}
+.aa-dots{display:flex;justify-content:center;gap:${w(2.4)};margin-top:${w(1)}}
+.aa-dot{width:${w(2.1)};height:${w(2.1)};min-width:10px;min-height:10px;border-radius:50%;border:1px solid #c9788a;background:transparent;padding:0;cursor:pointer;transition:transform .3s,background .3s}
+.aa-dot.on{background:#c2506a;border-color:#c2506a;transform:scale(1.3)}
+.aa-lb{position:fixed;inset:0;z-index:300;background:rgba(58,20,36,.86);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;animation:aa-lbin .3s ease both}
+.aa-lb img{max-width:92vw;max-height:86vh;border-radius:14px;border:3px solid #fbe3e7;box-shadow:0 24px 60px rgba(0,0,0,.5);animation:aa-lbpop .4s cubic-bezier(.2,.9,.3,1.2) both}
+.aa-lb button{position:absolute;background:rgba(255,247,249,.16);border:1px solid rgba(255,255,255,.5);color:#fff;border-radius:50%;width:44px;height:44px;font-size:26px;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0 0 3px}
+.aa-lb-x{top:16px;right:16px}
+.aa-lb-a{top:50%;margin-top:-22px}.aa-lb-l{left:10px}.aa-lb-r{right:10px}
+@keyframes aa-lbin{from{opacity:0}to{opacity:1}}
+@keyframes aa-lbpop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
 
 /* Function cards (Sangeet / Wedding / Reception) */
 .aa-fgrid{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:${w(2.4)};margin-top:${w(0.4)}}
@@ -1467,45 +1485,175 @@ function af({ delay: a }) {
     ],
   })
 }
-function PF({ src: a, alt: e, w: t, ratio: i, rot: r, delay: o, pos: l, kind: k, style: c }) {
-  let rad = k === 'oval' ? '50%' : k === 'arch' ? `${w(t / 2 + 2.2)} ${w(t / 2 + 2.2)} ${w(1.2)} ${w(1.2)}` : w(3.2),
-    rad2 = k === 'oval' ? '50%' : k === 'arch' ? `${w(t / 2)} ${w(t / 2)} ${w(0.5)} ${w(0.5)}` : w(2.2)
-  return (0, n.jsx)('div', {
-    className: 'aa-r',
-    style: { ...$(o), transform: `rotate(${r}deg)`, ...c },
-    children: (0, n.jsxs)('div', {
-      className: 'aa-flt',
-      style: {
-        '--fd': `${o}s`,
-        '--sd': `${o + 1.5}s`,
-        position: 'relative',
-        width: w(t + 4.6),
-        padding: w(0.9),
-        boxSizing: 'border-box',
-        background: 'linear-gradient(135deg,#8d4056 0%,#e298a7 24%,#b8657e 48%,#f0b6bf 72%,#9a475e 100%)',
-        borderRadius: rad,
-        boxShadow: '0 14px 30px rgba(90,46,64,.30), 0 2px 5px rgba(90,46,64,.2)',
-      },
-      children: [
-        (0, n.jsx)('div', {
-          style: { background: '#ffeff2', padding: w(1.5), borderRadius: rad2, boxShadow: 'inset 0 0 0 1px rgba(176,98,121,.5)' },
-          children: (0, n.jsx)('div', {
-            style: { position: 'relative', width: '100%', paddingTop: `${100 * i}%`, overflow: 'hidden', background: '#eed4d9', borderRadius: k === 'oval' ? '50%' : k === 'arch' ? `${w(t / 2 - 1)} ${w(t / 2 - 1)} ${w(0.4)} ${w(0.4)}` : w(1.4) },
-            children: (0, n.jsx)('img', {
-              src: a,
-              alt: e,
-              draggable: !1,
-              loading: 'lazy',
-              style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: l },
-            }),
+
+// 3D photo carousel for "Our Moments": swipe / drag / tap / dots, hover tilt, auto-advance, full-screen view.
+function MO() {
+  let cnt = p.moments.length,
+    [act, setAct] = (0, s.useState)(0),
+    [dx, setDx] = (0, s.useState)(0),
+    [open, setOpen] = (0, s.useState)(null),
+    st = (0, s.useRef)({ down: !1, x0: 0, moved: !1, last: 0, vis: 0 }),
+    root = (0, s.useRef)(null),
+    tilt = (0, s.useRef)(null),
+    go = (dir) => {
+      ;((st.current.last = Date.now()), setAct((a) => (a + dir + cnt) % cnt))
+    }
+  ;(0, s.useEffect)(() => {
+    let t = window.setInterval(() => {
+      let r = root.current?.getBoundingClientRect()
+      if (!r || null !== open || st.current.down || document.hidden) return
+      let seen = r.top < 0.7 * window.innerHeight && r.bottom > 0.3 * window.innerHeight
+      seen ? st.current.vis || (st.current.vis = Date.now()) : (st.current.vis = 0)
+      seen && Date.now() - Math.max(st.current.last, st.current.vis) > 4500 && setAct((a) => (a + 1) % cnt)
+    }, 3800)
+    return () => clearInterval(t)
+  }, [open, cnt])
+  ;(0, s.useEffect)(() => {
+    if (null === open) return
+    let k = (ev) => {
+      'Escape' === ev.key
+        ? setOpen(null)
+        : 'ArrowRight' === ev.key
+          ? setOpen((a) => (a + 1) % cnt)
+          : 'ArrowLeft' === ev.key && setOpen((a) => (a - 1 + cnt) % cnt)
+    }
+    return (window.addEventListener('keydown', k), () => window.removeEventListener('keydown', k))
+  }, [open, cnt])
+  let setTilt = (rx, ry) => {
+    let el = tilt.current
+    el && (el.style.setProperty('--rx', `${rx}deg`), el.style.setProperty('--ry', `${ry}deg`))
+  }
+  let down = (ev) => {
+      ;((st.current.down = !0), (st.current.x0 = ev.clientX), (st.current.moved = !1))
+    },
+    move = (ev) => {
+      let S = st.current
+      if (S.down) {
+        let d = ev.clientX - S.x0
+        ;(Math.abs(d) > 6 && (S.moved = !0), setDx(d), setTilt(0, 0))
+      } else if ('mouse' === ev.pointerType) {
+        let r = root.current.getBoundingClientRect()
+        setTilt(
+          Math.max(-1, Math.min(1, -((ev.clientY - (r.top + 0.5 * r.height)) / (0.5 * r.height)))) * 7,
+          Math.max(-1, Math.min(1, (ev.clientX - (r.left + 0.5 * r.width)) / (0.5 * r.width))) * 11,
+        )
+      }
+    },
+    up = () => {
+      let S = st.current
+      S.down && ((S.down = !1), Math.abs(dx) > 45 && go(dx < 0 ? 1 : -1), setDx(0))
+    },
+    leave = () => {
+      ;(setTilt(0, 0), st.current.down && ((st.current.down = !1), setDx(0)))
+    }
+  let card = (src, i) => {
+    let o = (((i - act + cnt + cnt / 2) % cnt) - cnt / 2) | 0,
+      ao = Math.abs(o),
+      hid = ao > 1,
+      on = 0 === o,
+      drag = on && 0 !== dx,
+      tf = hid
+        ? `translateZ(calc(var(--u) * -46)) scale(.82)`
+        : `${drag ? `translateX(${dx}px) rotateY(${dx * 0.1}deg) ` : ''}translateX(calc(var(--u) * ${o * 35})) translateZ(calc(var(--u) * ${-ao * 24})) rotateY(${-o * 40}deg) scale(${on ? 1 : 0.9})`
+    return (0, n.jsx)(
+      'div',
+      {
+        className: `aa-mo-card${drag ? ' drag' : ''}`,
+        style: {
+          transform: tf,
+          opacity: hid ? 0 : 1,
+          zIndex: 10 - 3 * ao,
+          pointerEvents: hid ? 'none' : 'auto',
+          filter: on ? 'none' : 'brightness(.93) saturate(.95)',
+        },
+        onClick: () => {
+          st.current.moved || (on ? setOpen(i) : go(o))
+        },
+        role: 'button',
+        tabIndex: on ? 0 : -1,
+        'aria-label': on ? 'View photo full screen' : 'Show this photo',
+        onKeyDown: (ev) => {
+          ;('Enter' === ev.key || ' ' === ev.key) && (ev.preventDefault(), on ? setOpen(i) : go(o))
+        },
+        children: (0, n.jsx)('div', {
+          className: on ? 'aa-flt' : void 0,
+          style: { '--fd': `${i * 0.7}s` },
+          children: (0, n.jsxs)('div', {
+            className: 'aa-mo-frame',
+            ref: on ? tilt : void 0,
+            children: [
+              (0, n.jsx)('div', {
+                className: 'aa-mo-mat',
+                children: (0, n.jsx)('img', {
+                  src,
+                  alt: 'Sidharthan and Prinna',
+                  draggable: !1,
+                  loading: 'lazy',
+                  decoding: 'async',
+                }),
+              }),
+              (0, n.jsx)('div', { className: 'aa-shine', 'aria-hidden': !0 }),
+            ],
           }),
         }),
-        (0, n.jsx)('div', { className: 'aa-shine', style: { borderRadius: rad }, 'aria-hidden': !0 }),
-      ],
-    }),
+      },
+      i,
+    )
+  }
+  return (0, n.jsxs)(n.Fragment, {
+    children: [
+      (0, n.jsxs)('div', {
+        className: 'aa-r',
+        style: { ...$(0.7), width: '100%' },
+        children: [
+          (0, n.jsxs)('div', {
+            ref: root,
+            className: 'aa-mo',
+            onPointerDown: down,
+            onPointerMove: move,
+            onPointerUp: up,
+            onPointerCancel: leave,
+            onPointerLeave: leave,
+            children: [
+              p.moments.map(card),
+              (0, n.jsx)('div', { className: 'aa-mo-floor', 'aria-hidden': !0 }),
+            ],
+          }),
+          (0, n.jsx)('div', {
+            className: 'aa-dots',
+            role: 'tablist',
+            children: p.moments.map((_, i) =>
+              (0, n.jsx)(
+                'button',
+                {
+                  type: 'button',
+                  className: `aa-dot${i === act ? ' on' : ''}`,
+                  'aria-label': `Photo ${i + 1} of ${cnt}`,
+                  onClick: () => ((st.current.last = Date.now()), setAct(i)),
+                },
+                i,
+              ),
+            ),
+          }),
+          (0, n.jsx)(B, { size: 2.1, track: 0.3, color: y, delay: 1.4, style: { marginTop: w(1.6) }, children: 'Swipe · Tap a photo to view' }),
+        ],
+      }),
+      null !== open &&
+        createPortal((0, n.jsxs)('div', {
+          className: 'aa-lb',
+          role: 'dialog',
+          'aria-label': 'Photo',
+          onClick: () => setOpen(null),
+          children: [
+            (0, n.jsx)('img', { src: p.moments[open], alt: 'Sidharthan and Prinna', onClick: (ev) => ev.stopPropagation(), draggable: !1 }),
+            (0, n.jsx)('button', { type: 'button', className: 'aa-lb-x', 'aria-label': 'Close', onClick: () => setOpen(null), children: '×' }),
+            (0, n.jsx)('button', { type: 'button', className: 'aa-lb-a aa-lb-l', 'aria-label': 'Previous photo', onClick: (ev) => (ev.stopPropagation(), setOpen((a) => (a - 1 + cnt) % cnt)), children: '‹' }),
+            (0, n.jsx)('button', { type: 'button', className: 'aa-lb-a aa-lb-r', 'aria-label': 'Next photo', onClick: (ev) => (ev.stopPropagation(), setOpen((a) => (a + 1) % cnt)), children: '›' }),
+          ],
+        }), document.body),
+    ],
   })
 }
-
 function FCal({ date }) {
   let mt = /(\d{1,2})\s+([A-Za-z]{3})/.exec(date) || ['', '', '']
   return (0, n.jsxs)('div', {
@@ -1747,7 +1895,6 @@ export default function () {
                     style: { marginTop: w(0.8) },
                     children: 'Wedding',
                   }),
-                  (0, n.jsx)(PF, { src: p.formal, alt: 'Sidharthan and Prinna', kind: 'oval', w: 32, ratio: 1.25, rot: 0, delay: 4.6, pos: '50% 50%', style: { marginTop: w(5) } }),
                 ],
               }),
             }),
@@ -1817,9 +1964,8 @@ export default function () {
                 children: [
                   (0, n.jsx)(B, { size: 3, track: 0.5, color: x, delay: 0.1, children: 'Our Moments' }),
                   (0, n.jsx)(G, { w: 14, delay: 0.4, gap: 2.2 }),
-                  (0, n.jsx)(PF, { src: p.couple, alt: 'Sidharthan and Prinna', kind: 'arch', w: 40, ratio: 1.5, rot: -2, delay: 0.7, pos: '50% 50%', style: { alignSelf: 'flex-start', marginLeft: w(6) } }),
-                  (0, n.jsx)(PF, { src: p.moment2, alt: 'Sidharthan and Prinna', kind: 'round', w: 34, ratio: 1.1, rot: 2.4, delay: 1.5, pos: '50% 70%', style: { alignSelf: 'flex-end', marginRight: w(5), marginTop: w(-9) } }),
-                  (0, n.jsx)(X, { size: 8, delay: 2.4, style: { marginTop: w(3) }, children: 'Made for each other' }),
+                  (0, n.jsx)(MO, {}),
+                  (0, n.jsx)(X, { size: 8, delay: 1.6, style: { marginTop: w(1) }, children: 'Made for each other' }),
                 ],
               }),
             }),
@@ -1885,7 +2031,6 @@ export default function () {
                 top: 13,
                 bottom: 10,
                 children: [
-                  (0, n.jsx)(PF, { src: p.steps, alt: 'Sidharthan and Prinna', kind: 'arch', w: 30, ratio: 1.15, rot: 0, delay: 0.2, pos: '50% 50%', style: { marginBottom: w(3) } }),
                   (0, n.jsx)(af, { delay: 0.8 }),
                   (0, n.jsxs)(O, {
                     size: 4.5,
