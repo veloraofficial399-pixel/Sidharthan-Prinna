@@ -292,20 +292,36 @@ let N = (a) => Math.round(100 * a) / 100,
 @keyframes aa-lbin{from{opacity:0}to{opacity:1}}
 @keyframes aa-lbpop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
 
+/* Tall pages: art only at the top and bottom, flat paper between */
+.aa-page.aa-tall{height:auto;min-height:100vh;min-height:100svh}
+.aa-artt{position:relative;margin:0 auto;width:100%;min-height:100vh;overflow:hidden;container-type:inline-size;background:#f4eae2}
+@supports (height:1svh){.aa-artt{min-height:100svh}}
+@media (min-aspect-ratio:3/5){.aa-artt{width:calc(100vh*0.5628);box-shadow:0 0 80px rgba(90,64,40,.22)}@supports (height:1svh){.aa-artt{width:calc(100svh*0.5628)}}}
+.aa-tcopy{position:relative;z-index:3;width:min(84%,calc(100vw - 36px));margin:0 auto;padding:calc(var(--u)*50) 0 calc(var(--u)*52);box-sizing:border-box;display:flex;flex-direction:column;align-items:center;text-align:center}
+.aa-hdr{position:relative}
+.aa-hdr::before{content:'';position:absolute;inset:-14% -14%;z-index:-1;pointer-events:none;background:radial-gradient(closest-side,rgba(255,246,248,.92),rgba(255,246,248,.65) 60%,rgba(255,246,248,0))}
+.aa-sl{position:absolute;left:0;width:100%;overflow:hidden;height:calc(100cqw / .5628 * .52);pointer-events:none}
+.aa-slimg{position:absolute;left:0;width:100%;height:auto;display:block}
+.aa-sl-t{top:0;-webkit-mask-image:linear-gradient(#000 74%,transparent);mask-image:linear-gradient(#000 74%,transparent)}
+.aa-sl-t .aa-slimg{top:0}
+.aa-sl-b{bottom:0;-webkit-mask-image:linear-gradient(transparent,#000 26%);mask-image:linear-gradient(transparent,#000 26%)}
+.aa-sl-b .aa-slimg{bottom:0}
 /* Function cards (Sangeet / Wedding / Reception) */
-.aa-fgrid{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:${w(2.4)};margin-top:${w(0.4)}}
-.aa-fc{position:relative;overflow:hidden;height:100%;box-sizing:border-box;border-radius:${w(3.6)};background:rgba(255,255,255,.74);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);border:1px solid rgba(214,134,152,.4);padding:${w(2.6)} ${w(2)} ${w(3)};text-align:center;box-shadow:0 6px 18px rgba(176,84,110,.12);cursor:pointer;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
+.aa-fgrid{width:100%;display:grid;grid-template-columns:1fr;gap:${w(3.4)};margin-top:${w(0.6)}}
+.aa-rvw{width:100%;display:block}
+.aa-fgrid>.aa-rvw{display:block}
+.aa-fc{position:relative;overflow:hidden;height:100%;box-sizing:border-box;border-radius:${w(3.6)};background:rgba(255,255,255,.74);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);border:1px solid rgba(214,134,152,.4);padding:${w(4.2)} ${w(3)} ${w(4.6)};text-align:center;box-shadow:0 8px 22px rgba(176,84,110,.14);cursor:pointer;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
 .aa-fc:hover{transform:translateY(${w(-0.8)});box-shadow:0 16px 32px rgba(196,80,112,.22)}
-.aa-fc-ic{display:flex;justify-content:center;align-items:center;height:${w(11.5)};margin-bottom:${w(1)};transition:transform .4s cubic-bezier(.3,1.5,.5,1)}
+.aa-fc-ic{display:flex;justify-content:center;align-items:center;height:${w(15)};margin-bottom:${w(1.6)};transition:transform .4s cubic-bezier(.3,1.5,.5,1)}
 .aa-fc:hover .aa-fc-ic{transform:scale(1.14) rotate(-3deg)}
-.aa-fc-lbl{font-family:${j};font-weight:500;font-size:${w(2)};letter-spacing:.34em;padding-left:.34em;text-transform:uppercase;color:${x};margin:0 0 ${w(0.8)}}
+.aa-fc-lbl{font-family:${j};font-weight:500;font-size:${w(5.6)};letter-spacing:.02em;color:${x};margin:0 0 ${w(1.2)};line-height:1.2}
 .aa-fc-bar{position:absolute;left:50%;bottom:0;height:${w(0.45)};width:0;transform:translateX(-50%);background:linear-gradient(90deg,rgba(201,120,138,0),#c9788a,rgba(201,120,138,0));transition:width .45s ease}
 .aa-fc:hover .aa-fc-bar{width:62%}
 .aa-rip{position:absolute;border-radius:50%;background:rgba(255,255,255,.95);transform:scale(0);opacity:.9;pointer-events:none;animation:aa-rip .7s ease-out forwards}
 @keyframes aa-rip{to{transform:scale(1);opacity:0}}
-.aa-cal{width:${w(11)};border-radius:${w(1.3)};border:1px solid rgba(214,134,152,.7);background:#fff;overflow:hidden;box-shadow:0 2px 6px rgba(176,84,110,.15)}
-.aa-cal-h{background:#c2506a;color:#fff;font-family:${j};font-weight:600;font-size:${w(1.7)};letter-spacing:.24em;padding:${w(0.5)} 0 ${w(0.5)} .24em;line-height:1.3}
-.aa-cal-d{font-family:${j};font-weight:500;font-size:${w(5.6)};color:#3d2330;line-height:1.1;padding:${w(0.4)} 0 ${w(0.6)}}
+.aa-cal{width:${w(14)};border-radius:${w(1.3)};border:1px solid rgba(214,134,152,.7);background:#fff;overflow:hidden;box-shadow:0 2px 6px rgba(176,84,110,.15)}
+.aa-cal-h{background:#c2506a;color:#fff;font-family:${j};font-weight:600;font-size:${w(2.2)};letter-spacing:.24em;padding:${w(0.6)} 0 ${w(0.6)} .24em;line-height:1.3}
+.aa-cal-d{font-family:${j};font-weight:500;font-size:${w(7.4)};color:#3d2330;line-height:1.1;padding:${w(0.4)} 0 ${w(0.6)}}
 
 .aa-root ::selection,.aa-cover ::selection{background:rgba(214,134,152,.35);color:inherit}
 .aa-root :focus-visible{outline:2px solid #c9788a!important;outline-offset:3px}
@@ -573,7 +589,33 @@ function _() {
     ),
   })
 }
-function q({ id: a, art: e, flip: t, overlays: i, label: r, eager: s, children: o }) {
+function q({ id: a, art: e, flip: t, overlays: i, label: r, eager: s, tall: th, children: o }) {
+  if (th)
+    return (0, n.jsxs)('section', {
+      id: a,
+      className: 'aa-page aa-tall',
+      'aria-label': r,
+      style: { '--bg': `url('${e}')` },
+      children: [
+        (0, n.jsx)('div', { className: 'aa-bg', 'aria-hidden': !0 }),
+        (0, n.jsxs)('div', {
+          className: 'aa-artt',
+          children: [
+            (0, n.jsx)('div', {
+              className: 'aa-sl aa-sl-t',
+              'aria-hidden': !0,
+              children: (0, n.jsx)('img', { src: e, alt: '', className: `aa-slimg${t ? ` aa-f${t}` : ''}`, draggable: !1, loading: 'lazy', decoding: 'async' }),
+            }),
+            (0, n.jsx)('div', {
+              className: 'aa-sl aa-sl-b',
+              'aria-hidden': !0,
+              children: (0, n.jsx)('img', { src: e, alt: '', className: `aa-slimg${t ? ` aa-f${t}` : ''}`, draggable: !1, loading: 'lazy', decoding: 'async' }),
+            }),
+            o,
+          ],
+        }),
+      ],
+    })
   return (0, n.jsxs)('section', {
     id: a,
     'data-aa-page': '',
@@ -1669,7 +1711,7 @@ function FClock() {
   return (0, n.jsxs)('svg', {
     viewBox: '0 0 24 24',
     'aria-hidden': !0,
-    style: { width: w(8), height: w(8), display: 'block' },
+    style: { width: w(10.5), height: w(10.5), display: 'block' },
     fill: 'none',
     stroke: x,
     strokeWidth: '1.4',
@@ -1708,9 +1750,22 @@ function FC({ icon, label, children: kids, delay = 0, span }) {
     }),
   })
 }
+// Reveals its children when this block scrolls into view (for pages taller than the screen).
+function Rv({ children: kids, style: st2, cls: cl = '' }) {
+  let ref = (0, s.useRef)(null)
+  ;(0, s.useEffect)(() => {
+    let el = ref.current
+    if (!el) return
+    let io = new IntersectionObserver(
+      ([en]) => (en.isIntersecting ? el.classList.add('aa-in') : el.classList.remove('aa-in')),
+      { threshold: 0.18 },
+    )
+    return (io.observe(el), () => io.disconnect())
+  }, [])
+  return (0, n.jsx)('div', { ref, className: `aa-rvw ${cl}`, style: st2, children: kids })
+}
 function EV({ ev, art, flip }) {
-  let [dMain, dDay] = ev.dateText.split(' · '),
-    cal = {
+  let cal = {
       title: `${ev.label} — Sidharthan & Prinna`,
       start: new Date(ev.startISO),
       end: new Date(ev.endISO),
@@ -1718,75 +1773,89 @@ function EV({ ev, art, flip }) {
       details: `${ev.label} of Sidharthan & Prinna at ${ev.venue}.`,
       uid: `${d}-${ev.key}@zetron.tech`,
     },
-    body = (t, sz = 3.3, wt = 500) => ({ fontFamily: j, fontWeight: wt, fontSize: w(sz), color: u, margin: 0, lineHeight: 1.3 })
+    body = (sz = 3.5, wt = 500) => ({ fontFamily: j, fontWeight: wt, fontSize: w(sz), color: y, margin: 0, lineHeight: 1.4 })
   return (0, n.jsx)(q, {
     id: `aa-${ev.key}`,
     art,
     flip,
     label: ev.label,
-    children: (0, n.jsxs)(J, {
-      top: 10,
-      bottom: 7,
-      wash: !0,
+    tall: !0,
+    children: (0, n.jsxs)('div', {
+      className: 'aa-tcopy',
       children: [
-        (0, n.jsx)(B, { size: 3, track: 0.5, color: x, delay: 0.1, children: ev.label }),
-        (0, n.jsx)(X, { size: 8, delay: 0.4, children: ev.script }),
-        (0, n.jsx)(G, { w: 14, delay: 1, gap: 1.8 }),
+        (0, n.jsxs)(Rv, {
+          cls: 'aa-hdr',
+          children: [
+            (0, n.jsx)(B, { size: 3.8, track: 0.5, color: '#6d2c40', weight: 700, delay: 0.1, children: ev.label }),
+            (0, n.jsx)(X, {
+              size: 10,
+              delay: 0.4,
+              color: '#8a3550',
+              style: { WebkitTextStroke: '.6px #8a3550', textShadow: '0 0 14px rgba(255,247,249,.95), 0 0 5px rgba(255,247,249,.9)' },
+              children: ev.script,
+            }),
+            (0, n.jsx)(G, { w: 16, delay: 1, gap: 2.2 }),
+          ],
+        }),
         (0, n.jsxs)('div', {
           className: 'aa-fgrid',
           children: [
-            (0, n.jsxs)(FC, {
-              icon: (0, n.jsx)(FCal, { date: dMain }),
-              label: 'Date',
-              delay: 1.2,
-              children: [
-                (0, n.jsx)('p', { style: body(0, 3.3), children: dMain }),
-                (0, n.jsx)('p', { style: { ...body(0, 2.8, 400), color: y, fontStyle: 'italic' }, children: dDay }),
-              ],
+            (0, n.jsx)(Rv, {
+              children: (0, n.jsxs)(FC, {
+                icon: (0, n.jsx)(FCal, { date: ev.dateText.split(' · ')[0] }),
+                label: 'Date',
+                children: [(0, n.jsx)('p', { style: body(), children: ev.dateText })],
+              }),
             }),
-            (0, n.jsxs)(FC, {
-              icon: (0, n.jsx)(FClock, {}),
-              label: 'Time',
-              delay: 1.4,
-              children: [(0, n.jsx)('p', { style: body(0, 3.3), children: ev.timeText })],
+            (0, n.jsx)(Rv, {
+              children: (0, n.jsxs)(FC, {
+                icon: (0, n.jsx)(FClock, {}),
+                label: 'Time',
+                children: [(0, n.jsx)('p', { style: body(), children: ev.timeText })],
+              }),
             }),
-            (0, n.jsxs)(FC, {
-              icon: (0, n.jsx)(V, { size: w(8) }),
-              label: 'Venue',
-              delay: 1.6,
-              span: !0,
-              children: [
-                (0, n.jsx)('p', { style: body(0, 4.4), children: ev.venueName }),
-                ev.venueSub && (0, n.jsx)('p', { style: { ...body(0, 2.8, 400), color: y, fontStyle: 'italic' }, children: ev.venueSub }),
-              ],
+            (0, n.jsx)(Rv, {
+              children: (0, n.jsxs)(FC, {
+                icon: (0, n.jsx)(V, { size: w(10) }),
+                label: 'Venue',
+                children: [
+                  (0, n.jsx)('p', { style: { ...body(4), color: u }, children: ev.venueName }),
+                  ev.venueSub && (0, n.jsx)('p', { style: { ...body(3.2, 400), fontStyle: 'italic' }, children: ev.venueSub }),
+                ],
+              }),
             }),
           ],
         }),
-        (0, n.jsxs)('a', {
-          href: ev.mapUrl,
-          target: '_blank',
-          rel: 'noopener noreferrer',
-          className: 'aa-pill aa-r',
-          style: { ...$(1.9), marginTop: w(3.6) },
-          children: [(0, n.jsx)(V, { size: w(3.6) }), 'View Location'],
-        }),
-        (0, n.jsx)('div', {
-          className: 'aa-r',
-          style: { ...$(2.1), marginTop: w(3) },
-          children: (0, n.jsx)(al, { target: Date.parse(ev.startISO), label: `Countdown to the ${ev.label}` }),
-        }),
-        (0, n.jsx)('div', {
-          className: 'aa-r',
-          style: { ...$(2.4), marginTop: w(2.6) },
-          children: (0, n.jsx)(c.AddToCalendar, {
-            event: cal,
-            fileName: `${ev.key}-sidharthan-prinna`,
-            accent: x,
-            color: x,
-            bg: 'rgba(255,247,249,.7)',
-            label: 'Add to calendar',
-            style: { fontFamily: j, fontWeight: 600, fontSize: w(2.6), letterSpacing: '.2em' },
-          }),
+        (0, n.jsxs)(Rv, {
+          style: { display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: w(5) },
+          children: [
+            (0, n.jsxs)('a', {
+              href: ev.mapUrl,
+              target: '_blank',
+              rel: 'noopener noreferrer',
+              className: 'aa-pill aa-r',
+              style: { ...$(0.1), padding: `${w(3.2)} ${w(7)}`, fontSize: w(3) },
+              children: [(0, n.jsx)(V, { size: w(4) }), 'View Location'],
+            }),
+            (0, n.jsx)('div', {
+              className: 'aa-r',
+              style: { ...$(0.35), marginTop: w(4) },
+              children: (0, n.jsx)(al, { target: Date.parse(ev.startISO), label: `Countdown to the ${ev.label}` }),
+            }),
+            (0, n.jsx)('div', {
+              className: 'aa-r',
+              style: { ...$(0.6), marginTop: w(3.4) },
+              children: (0, n.jsx)(c.AddToCalendar, {
+                event: cal,
+                fileName: `${ev.key}-sidharthan-prinna`,
+                accent: x,
+                color: x,
+                bg: 'rgba(255,247,249,.7)',
+                label: 'Add to calendar',
+                style: { fontFamily: j, fontWeight: 600, fontSize: w(2.8), letterSpacing: '.2em' },
+              }),
+            }),
+          ],
         }),
       ],
     }),
@@ -2019,13 +2088,13 @@ export default function () {
               }),
             }),
             (0, n.jsx)(EV, { ev: EVENTS.sangeet, art: p.floral, flip: 'x' }),
-            (0, n.jsx)(EV, { ev: EVENTS.wedding, art: p.floral, flip: 'xy' }),
-            (0, n.jsx)(EV, { ev: EVENTS.reception, art: p.floral, flip: 'y' }),
+            (0, n.jsx)(EV, { ev: EVENTS.wedding, art: p.floral }),
+            (0, n.jsx)(EV, { ev: EVENTS.reception, art: p.floral, flip: 'x' }),
             (0, n.jsx)(c.ScrollIndicatorMarker, {}),
             (0, n.jsx)(q, {
               id: 'aa-closing',
               art: p.floral,
-              flip: 'x',
+              flip: 'y',
               label: 'With love',
               children: (0, n.jsxs)(J, {
                 top: 13,
