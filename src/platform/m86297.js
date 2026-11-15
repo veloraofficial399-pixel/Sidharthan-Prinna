@@ -91,8 +91,8 @@ export default function ({ src: e, startTime: o = 0, endTime: i, eagerStart: c =
         ;(u(!0), h(!1))
         let e = 0,
           r = setInterval(() => {
-            ;((t.volume = e = Math.min(e + 0.04, 0.38)), e >= 0.38 && clearInterval(r))
-          }, 80)
+            ;((t.volume = e = Math.min(e + 0.1, 0.38)), e >= 0.38 && clearInterval(r))
+          }, 50)
       }
       function l() {
         s ||
@@ -154,7 +154,7 @@ export default function ({ src: e, startTime: o = 0, endTime: i, eagerStart: c =
           (0, t.jsx)('audio', {
             ref: d,
             src: e,
-            preload: 'metadata',
+            preload: 'auto',
             autoPlay: !0,
             muted: !0,
             style: { display: 'none' },
