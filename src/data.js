@@ -1,0 +1,43 @@
+// All event details for the Sidharthan & Prinna invitation live here.
+// Times are Indian Standard Time (+05:30).
+export const EVENTS = {
+  sangeet: {
+    key: 'sangeet',
+    label: 'Sangeet',
+    script: 'An evening of music',
+    startISO: '2026-11-28T16:00:00+05:30',
+    endISO: '2026-11-28T20:00:00+05:30',
+    dateText: '28 November 2026 · Saturday',
+    timeText: '4:00 PM onwards',
+    venueName: 'Santhwanasparsam Mandapam',
+    venueSub: 'Tattamangalam',
+    venue: 'Santhwanasparsam Mandapam, Tattamangalam',
+    mapUrl: 'https://maps.app.goo.gl/YN5J3kReZbfZ5zZZ7?g_st=awb',
+  },
+  wedding: {
+    key: 'wedding',
+    label: 'Wedding Ceremony',
+    script: 'The wedding',
+    startISO: '2026-11-29T09:30:00+05:30',
+    endISO: '2026-11-29T10:30:00+05:30',
+    dateText: '29 November 2026 · Sunday',
+    timeText: '9:30 AM – 10:30 AM',
+    venueName: 'Yakkara Viswesvara Temple',
+    venueSub: '',
+    venue: 'Yakkara Viswesvara Temple',
+    mapUrl: 'https://maps.app.goo.gl/PsXcH1ePM37rSwD68?g_st=awb',
+  },
+  reception: {
+    key: 'reception',
+    label: 'Reception',
+    script: 'A celebration',
+    startISO: '2026-11-29T16:00:00+05:30',
+    endISO: '2026-11-29T20:00:00+05:30',
+    dateText: '29 November 2026 · Sunday',
+    timeText: '4:00 PM onwards',
+    venueName: 'Gowrisankar Kalyanamandapam',
+    venueSub: 'Vadavannur',
+    venue: 'Gowrisankar Kalyanamandapam, Vadavannur',
+    mapUrl: 'https://maps.app.goo.gl/vaq5xEHHemNGTLVU7?g_st=awb',
+  },
+}
