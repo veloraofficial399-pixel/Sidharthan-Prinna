@@ -290,9 +290,6 @@ let N = (a) => Math.round(100 * a) / 100,
 .aa-lb button{position:absolute;background:rgba(255,247,249,.16);border:1px solid rgba(255,255,255,.5);color:#fff;border-radius:50%;width:44px;height:44px;font-size:26px;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0 0 3px}
 .aa-lb-x{top:16px;right:16px;z-index:2}
 .aa-lb-a{top:50%;margin-top:-22px;z-index:2}.aa-lb-l{left:10px}.aa-lb-r{right:10px}
-.aa-lb-z{position:absolute;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:flex;align-items:center;gap:12px;z-index:2;background:rgba(58,20,36,.6);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:6px 10px;color:#fff;font-family:${j};font-weight:700;font-size:16px;letter-spacing:.06em}
-.aa-lb-z button{position:static;width:38px;height:38px;font-size:24px}
-.aa-lb-z span{min-width:48px;text-align:center}
 @keyframes aa-lbin{from{opacity:0}to{opacity:1}}
 @keyframes aa-lbpop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
 
@@ -1682,7 +1679,7 @@ function MO() {
               ),
             ),
           }),
-          (0, n.jsx)(B, { size: 2.3, track: 0.26, color: y, delay: 1.4, style: { marginTop: w(1.6) }, children: 'Swipe · Tap a photo to view & zoom' }),
+          (0, n.jsx)(B, { size: 2.3, track: 0.26, color: y, delay: 1.4, style: { marginTop: w(1.6) }, children: 'Swipe · Tap a photo to view' }),
         ],
       }),
       null !== open &&
@@ -1699,102 +1696,34 @@ function MO() {
   })
 }
 
-// Full-screen photo viewer with zoom: pinch, wheel, double-tap, +/- buttons; drag to pan; swipe to change photo.
+// Full-screen photo viewer: swipe or arrows to change photo, tap outside or × to close.
 function LB({ i, cnt, onClose, onNav }) {
-  let [z, setZ] = (0, s.useState)({ k: 1, x: 0, y: 0 }),
-    [dragging, setDragging] = (0, s.useState)(!1),
-    img = (0, s.useRef)(null),
-    pts = (0, s.useRef)(new Map()),
-    g = (0, s.useRef)({ d0: 0, k0: 1, sx: 0, sy: 0, x0: 0, y0: 0, moved: !1, tap: 0, swiped: !1 })
-  ;(0, s.useEffect)(() => setZ({ k: 1, x: 0, y: 0 }), [i])
-  let fit = (k, x, y) => {
-      let el = img.current
-      if (!el || k <= 1.001) return { k: 1, x: 0, y: 0 }
-      let kk = Math.min(5, k),
-        mx = (el.offsetWidth * (kk - 1)) / 2,
-        my = (el.offsetHeight * (kk - 1)) / 2
-      return { k: kk, x: Math.max(-mx, Math.min(mx, x)), y: Math.max(-my, Math.min(my, y)) }
-    },
-    zoomBy = (f) => setZ((c) => fit(c.k * f, c.x, c.y)),
-    toggle = () => setZ((c) => (c.k > 1.05 ? { k: 1, x: 0, y: 0 } : fit(2.6, 0, 0))),
-    dist = () => {
-      let a = [...pts.current.values()]
-      return Math.hypot(a[0].x - a[1].x, a[0].y - a[1].y)
-    }
-  let down = (ev) => {
-      pts.current.set(ev.pointerId, { x: ev.clientX, y: ev.clientY })
-      let G2 = g.current
-      ;((G2.moved = !1), (G2.swiped = !1), (G2.sx = ev.clientX), (G2.sy = ev.clientY), (G2.x0 = z.x), (G2.y0 = z.y))
-      2 === pts.current.size && ((G2.d0 = dist()), (G2.k0 = z.k))
-      setDragging(!0)
-      try {
-        ev.currentTarget.setPointerCapture(ev.pointerId)
-      } catch {}
-    },
-    move = (ev) => {
-      if (!pts.current.has(ev.pointerId)) return
-      pts.current.set(ev.pointerId, { x: ev.clientX, y: ev.clientY })
-      let G2 = g.current
-      if (2 === pts.current.size) {
-        ;((G2.moved = !0), setZ((c) => fit(G2.k0 * (dist() / (G2.d0 || 1)), c.x, c.y)))
-        return
-      }
-      let dx = ev.clientX - G2.sx,
-        dy = ev.clientY - G2.sy
-      ;(Math.abs(dx) + Math.abs(dy) > 8 && (G2.moved = !0), z.k > 1.001 && setZ((c) => fit(c.k, G2.x0 + dx, G2.y0 + dy)))
-    },
-    up = (ev) => {
-      let G2 = g.current,
-        dx = ev.clientX - G2.sx,
-        dy = ev.clientY - G2.sy,
-        wasPinch = pts.current.size > 1
-      pts.current.delete(ev.pointerId)
-      pts.current.size || setDragging(!1)
-      if (wasPinch) return
-      if (!G2.moved) {
-        let now = Date.now()
-        ;(now - G2.tap < 320 ? (toggle(), (G2.tap = 0)) : (G2.tap = now))
-      } else if (z.k <= 1.001 && Math.abs(dx) > 60 && Math.abs(dx) > 1.5 * Math.abs(dy)) {
-        ;((G2.swiped = !0), onNav(dx < 0 ? 1 : -1))
-      }
-    }
+  let sx = (0, s.useRef)(null)
   return (0, n.jsxs)('div', {
     className: 'aa-lb',
     role: 'dialog',
     'aria-label': 'Photo viewer',
     onClick: (ev) => ev.target === ev.currentTarget && onClose(),
-    onWheel: (ev) => zoomBy(Math.exp(-0.0022 * ev.deltaY)),
     children: [
       (0, n.jsx)('div', {
         className: 'aa-lb-stage',
         onClick: (ev) => ev.target === ev.currentTarget && onClose(),
         children: (0, n.jsx)('img', {
-          ref: img,
           src: p.moments[i],
           alt: 'Sidharthan and Prinna',
           draggable: !1,
-          onPointerDown: down,
-          onPointerMove: move,
-          onPointerUp: up,
-          onPointerCancel: up,
-          style: {
-            transform: `translate(${z.x}px, ${z.y}px) scale(${z.k})`,
-            transition: dragging ? 'none' : 'transform .25s ease',
-            cursor: z.k > 1.001 ? (dragging ? 'grabbing' : 'grab') : 'zoom-in',
+          onPointerDown: (ev) => (sx.current = { x: ev.clientX, y: ev.clientY }),
+          onPointerUp: (ev) => {
+            let o = sx.current
+            sx.current = null
+            o && Math.abs(ev.clientX - o.x) > 60 && Math.abs(ev.clientX - o.x) > 1.5 * Math.abs(ev.clientY - o.y) && onNav(ev.clientX < o.x ? 1 : -1)
           },
+          onPointerCancel: () => (sx.current = null),
         }),
       }),
       (0, n.jsx)('button', { type: 'button', className: 'aa-lb-x', 'aria-label': 'Close', onClick: onClose, children: '×' }),
       (0, n.jsx)('button', { type: 'button', className: 'aa-lb-a aa-lb-l', 'aria-label': 'Previous photo', onClick: () => onNav(-1), children: '‹' }),
       (0, n.jsx)('button', { type: 'button', className: 'aa-lb-a aa-lb-r', 'aria-label': 'Next photo', onClick: () => onNav(1), children: '›' }),
-      (0, n.jsxs)('div', {
-        className: 'aa-lb-z',
-        children: [
-          (0, n.jsx)('button', { type: 'button', 'aria-label': 'Zoom out', onClick: () => zoomBy(1 / 1.5), children: '−' }),
-          (0, n.jsx)('span', { children: `${Math.round(100 * z.k)}%` }),
-          (0, n.jsx)('button', { type: 'button', 'aria-label': 'Zoom in', onClick: () => zoomBy(1.5), children: '+' }),
-        ],
-      }),
     ],
   })
 }
