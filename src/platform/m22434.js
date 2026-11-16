@@ -31,9 +31,9 @@ let d = 'ca5283ce-7783-4833-ab63-ebf34a66956c',
     details: 'The wedding of Sidharthan & Prinna. Sangeet on 28 November 2026 at Santhwanasparsam Mandapam, Tattamangalam. Reception on 29 November 2026 at Gowrisankar Kalyanamandapam, Vadavannur.',
     uid: `${d}-main@zetron.tech`,
   },
-  u = '#4a313d',
-  y = '#6b4a5a',
-  x = '#7d374b',
+  u = '#33202b',
+  y = '#4d2c3b',
+  x = '#74294a',
   b = '#a05068',
   v = '#fff3f5',
   j = "'Cormorant Garamond', Georgia, serif",
@@ -256,7 +256,7 @@ let N = (a) => Math.round(100 * a) / 100,
 
 /* Countdown tab */
 .aa-tab{display:flex;align-items:stretch;border:1px solid rgba(160,80,104,.5);border-radius:${w(3.2)};background:rgba(255,241,243,.8);box-shadow:0 8px 22px rgba(120,58,79,.13);padding:${w(2)} ${w(1.4)};animation:aa-tabin .9s cubic-bezier(.2,.8,.2,1) both}
-.aa-tab>div{display:flex;flex-direction:column;align-items:center;min-width:${w(12.5)};padding:0 ${w(1)}}
+.aa-tab>div{display:flex;flex-direction:column;align-items:center;min-width:${w(13.5)};padding:0 ${w(1)}}
 .aa-tab>div+div{border-left:1px solid rgba(160,80,104,.3)}
 .aa-tick{display:inline-block;animation:aa-tick .32s cubic-bezier(.2,.8,.2,1) both}
 @keyframes aa-tabin{from{opacity:0;transform:translateY(22px) scale(.96)}to{opacity:1;transform:none}}
@@ -264,7 +264,7 @@ let N = (a) => Math.round(100 * a) / 100,
 .aa-fadein{animation:aa-rise 1s cubic-bezier(.2,.7,.2,1) var(--d,0s) both}
 
 /* Buttons */
-.aa-pill{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:${w(2)};padding:${w(2.7)} ${w(6)};border:1px solid rgba(160,80,104,.75);border-radius:999px;background:rgba(255,239,242,.62);color:${u};font-family:${j};font-weight:500;font-size:${w(2.7)};letter-spacing:.3em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease,background .25s ease}
+.aa-pill{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:${w(2)};padding:${w(2.7)} ${w(6)};border:1px solid rgba(160,80,104,.75);border-radius:999px;background:rgba(255,239,242,.62);color:${u};font-family:${j};font-weight:700;font-size:${w(3)};letter-spacing:.26em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease,background .25s ease}
 .aa-pill:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(120,58,79,.18);background:rgba(255,242,244,.9)}
 .aa-pill:active{transform:scale(.97)}
 .aa-pill::after{content:'';position:absolute;top:0;bottom:0;width:40%;left:-60%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,234,239,.8),rgba(255,255,255,0));animation:aa-pillsheen 4.2s ease-in-out 1.5s infinite}
@@ -273,22 +273,26 @@ let N = (a) => Math.round(100 * a) / 100,
 @keyframes aa-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
 
 /* Our Moments: 3D carousel */
-.aa-mo{position:relative;width:100%;height:${w(94)};perspective:${w(170)};perspective-origin:50% 42%;touch-action:pan-y;user-select:none;-webkit-user-select:none}
-.aa-mo-card{position:absolute;left:50%;top:${w(2)};width:${w(60)};margin-left:${w(-30)};cursor:pointer;outline:none;transition:transform .85s cubic-bezier(.2,.8,.2,1),opacity .6s ease,filter .6s ease;will-change:transform,opacity}
+.aa-mo{position:relative;width:100%;height:${w(116)};perspective:${w(190)};perspective-origin:50% 42%;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.aa-mo-card{position:absolute;left:50%;top:${w(2)};width:${w(74)};margin-left:${w(-37)};cursor:pointer;outline:none;transition:transform .85s cubic-bezier(.2,.8,.2,1),opacity .6s ease,filter .6s ease;will-change:transform,opacity}
 .aa-mo-card.drag{transition:opacity .6s ease,filter .6s ease}
 .aa-mo-frame{position:relative;padding:${w(0.9)};box-sizing:border-box;border-radius:${w(3.4)};background:linear-gradient(135deg,#a35a6c 0%,#f3cdd3 24%,#c98a96 48%,#fbe3e7 72%,#9c5668 100%);box-shadow:0 ${w(5)} ${w(8)} rgba(110,40,70,.38),0 ${w(0.6)} ${w(1.4)} rgba(110,40,70,.25);transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .18s ease-out}
 .aa-mo-mat{background:#fff8f9;padding:${w(1.6)};border-radius:${w(2.5)};box-shadow:inset 0 0 0 1px rgba(214,134,152,.5)}
 .aa-mo-mat img{display:block;width:100%;height:auto;border-radius:${w(1.4)};pointer-events:none}
 .aa-mo-frame .aa-shine{border-radius:${w(3.4)}}
-.aa-mo-floor{position:absolute;left:50%;bottom:${w(1)};width:${w(56)};height:${w(5)};margin-left:${w(-28)};background:radial-gradient(closest-side,rgba(110,40,70,.30),rgba(110,40,70,0));pointer-events:none}
+.aa-mo-floor{position:absolute;left:50%;bottom:${w(1)};width:${w(68)};height:${w(5)};margin-left:${w(-34)};background:radial-gradient(closest-side,rgba(110,40,70,.30),rgba(110,40,70,0));pointer-events:none}
 .aa-dots{display:flex;justify-content:center;gap:${w(2.4)};margin-top:${w(1)}}
 .aa-dot{width:${w(2.1)};height:${w(2.1)};min-width:10px;min-height:10px;border-radius:50%;border:1px solid #c9788a;background:transparent;padding:0;cursor:pointer;transition:transform .3s,background .3s}
 .aa-dot.on{background:#c2506a;border-color:#c2506a;transform:scale(1.3)}
 .aa-lb{position:fixed;inset:0;z-index:300;background:rgba(58,20,36,.86);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;animation:aa-lbin .3s ease both}
-.aa-lb img{max-width:92vw;max-height:86vh;border-radius:14px;border:3px solid #fbe3e7;box-shadow:0 24px 60px rgba(0,0,0,.5);animation:aa-lbpop .4s cubic-bezier(.2,.9,.3,1.2) both}
+.aa-lb-stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.aa-lb img{max-width:96vw;max-height:84vh;border-radius:14px;border:3px solid #fbe3e7;box-shadow:0 24px 60px rgba(0,0,0,.5);touch-action:none;user-select:none;-webkit-user-select:none;pointer-events:auto;transform-origin:50% 50%;animation:aa-lbpop .4s cubic-bezier(.2,.9,.3,1.2) backwards}
 .aa-lb button{position:absolute;background:rgba(255,247,249,.16);border:1px solid rgba(255,255,255,.5);color:#fff;border-radius:50%;width:44px;height:44px;font-size:26px;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0 0 3px}
-.aa-lb-x{top:16px;right:16px}
-.aa-lb-a{top:50%;margin-top:-22px}.aa-lb-l{left:10px}.aa-lb-r{right:10px}
+.aa-lb-x{top:16px;right:16px;z-index:2}
+.aa-lb-a{top:50%;margin-top:-22px;z-index:2}.aa-lb-l{left:10px}.aa-lb-r{right:10px}
+.aa-lb-z{position:absolute;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:flex;align-items:center;gap:12px;z-index:2;background:rgba(58,20,36,.6);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:6px 10px;color:#fff;font-family:${j};font-weight:700;font-size:16px;letter-spacing:.06em}
+.aa-lb-z button{position:static;width:38px;height:38px;font-size:24px}
+.aa-lb-z span{min-width:48px;text-align:center}
 @keyframes aa-lbin{from{opacity:0}to{opacity:1}}
 @keyframes aa-lbpop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
 
@@ -314,7 +318,7 @@ let N = (a) => Math.round(100 * a) / 100,
 .aa-fc:hover{transform:translateY(${w(-0.8)});box-shadow:0 16px 32px rgba(196,80,112,.22)}
 .aa-fc-ic{display:flex;justify-content:center;align-items:center;height:${w(15)};margin-bottom:${w(1.6)};transition:transform .4s cubic-bezier(.3,1.5,.5,1)}
 .aa-fc:hover .aa-fc-ic{transform:scale(1.14) rotate(-3deg)}
-.aa-fc-lbl{font-family:${j};font-weight:500;font-size:${w(5.6)};letter-spacing:.02em;color:${x};margin:0 0 ${w(1.2)};line-height:1.2}
+.aa-fc-lbl{font-family:${j};font-weight:700;font-size:${w(6.2)};letter-spacing:.02em;color:${x};margin:0 0 ${w(1.2)};line-height:1.2}
 .aa-fc-bar{position:absolute;left:50%;bottom:0;height:${w(0.45)};width:0;transform:translateX(-50%);background:linear-gradient(90deg,rgba(201,120,138,0),#c9788a,rgba(201,120,138,0));transition:width .45s ease}
 .aa-fc:hover .aa-fc-bar{width:62%}
 .aa-rip{position:absolute;border-radius:50%;background:rgba(255,255,255,.95);transform:scale(0);opacity:.9;pointer-events:none;animation:aa-rip .7s ease-out forwards}
@@ -348,8 +352,8 @@ function B({
     style: {
       ...$(r),
       fontFamily: j,
-      fontWeight: s,
-      fontSize: w(e),
+      fontWeight: Math.max(s, 600),
+      fontSize: w(e * 1.14),
       letterSpacing: `${t}em`,
       paddingLeft: `${t}em`,
       textTransform: 'uppercase',
@@ -376,8 +380,8 @@ function H({
     'aria-label': a,
     style: {
       fontFamily: j,
-      fontWeight: o,
-      fontSize: w(e),
+      fontWeight: Math.max(o, 600),
+      fontSize: w(e * 1.07),
       letterSpacing: `${r}em`,
       paddingLeft: `${r}em`,
       color: s,
@@ -412,8 +416,8 @@ function Y({ text: a, size: e = 4.6, delay: t = 0, step: i = 0.12, color: r = y,
     style: {
       fontFamily: j,
       fontStyle: 'italic',
-      fontWeight: 400,
-      fontSize: w(e),
+      fontWeight: 500,
+      fontSize: w(e * 1.12),
       color: r,
       margin: 0,
       lineHeight: 1.55,
@@ -442,7 +446,8 @@ function X({ children: a, size: e = 8, delay: t = 0, color: i = b, style: r }) {
       ...$(t),
       fontFamily: k,
       fontWeight: 400,
-      fontSize: w(e),
+      fontSize: w(e * 1.1),
+      WebkitTextStroke: '.45px currentColor',
       color: i,
       margin: 0,
       lineHeight: 1.28,
@@ -460,8 +465,8 @@ function O({ children: a, size: e = 4.3, delay: t = 0, color: i = y, style: r })
       ...$(t),
       fontFamily: j,
       fontStyle: 'italic',
-      fontWeight: 400,
-      fontSize: w(e),
+      fontWeight: 500,
+      fontSize: w(e * 1.12),
       color: i,
       margin: 0,
       lineHeight: 1.55,
@@ -1198,7 +1203,7 @@ function as({ onReveal: a }) {
             className: 'aa-foiltext',
             style: {
               fontFamily: j,
-              fontWeight: 300,
+              fontWeight: 500,
               fontSize: w(24),
               lineHeight: 0.95,
               margin: `${w(0.4)} 0 ${w(0.2)}`,
@@ -1357,7 +1362,7 @@ function al({ target: tg = m, label: lb = 'Countdown to the wedding' } = {}) {
               'span',
               {
                 className: 'aa-tick',
-                style: { fontFamily: j, fontWeight: 500, fontSize: w(6.6), color: u, lineHeight: 1.1 },
+                style: { fontFamily: j, fontWeight: 600, fontSize: w(7.4), color: u, lineHeight: 1.1 },
                 children: a,
               },
               a,
@@ -1365,8 +1370,8 @@ function al({ target: tg = m, label: lb = 'Countdown to the wedding' } = {}) {
             (0, n.jsx)('span', {
               style: {
                 fontFamily: j,
-                fontWeight: 500,
-                fontSize: w(1.95),
+                fontWeight: 700,
+                fontSize: w(2.4),
                 letterSpacing: '.3em',
                 paddingLeft: '.3em',
                 textTransform: 'uppercase',
@@ -1596,7 +1601,7 @@ function MO() {
       drag = on && 0 !== dx,
       tf = hid
         ? `translateZ(calc(var(--u) * -46)) scale(.82)`
-        : `${drag ? `translateX(${dx}px) rotateY(${dx * 0.1}deg) ` : ''}translateX(calc(var(--u) * ${o * 35})) translateZ(calc(var(--u) * ${-ao * 24})) rotateY(${-o * 40}deg) scale(${on ? 1 : 0.9})`
+        : `${drag ? `translateX(${dx}px) rotateY(${dx * 0.1}deg) ` : ''}translateX(calc(var(--u) * ${o * 44})) translateZ(calc(var(--u) * ${-ao * 28})) rotateY(${-o * 40}deg) scale(${on ? 1 : 0.9})`
     return (0, n.jsx)(
       'div',
       {
@@ -1677,22 +1682,119 @@ function MO() {
               ),
             ),
           }),
-          (0, n.jsx)(B, { size: 2.1, track: 0.3, color: y, delay: 1.4, style: { marginTop: w(1.6) }, children: 'Swipe · Tap a photo to view' }),
+          (0, n.jsx)(B, { size: 2.3, track: 0.26, color: y, delay: 1.4, style: { marginTop: w(1.6) }, children: 'Swipe · Tap a photo to view & zoom' }),
         ],
       }),
       null !== open &&
-        createPortal((0, n.jsxs)('div', {
-          className: 'aa-lb',
-          role: 'dialog',
-          'aria-label': 'Photo',
-          onClick: () => setOpen(null),
-          children: [
-            (0, n.jsx)('img', { src: p.moments[open], alt: 'Sidharthan and Prinna', onClick: (ev) => ev.stopPropagation(), draggable: !1 }),
-            (0, n.jsx)('button', { type: 'button', className: 'aa-lb-x', 'aria-label': 'Close', onClick: () => setOpen(null), children: '×' }),
-            (0, n.jsx)('button', { type: 'button', className: 'aa-lb-a aa-lb-l', 'aria-label': 'Previous photo', onClick: (ev) => (ev.stopPropagation(), setOpen((a) => (a - 1 + cnt) % cnt)), children: '‹' }),
-            (0, n.jsx)('button', { type: 'button', className: 'aa-lb-a aa-lb-r', 'aria-label': 'Next photo', onClick: (ev) => (ev.stopPropagation(), setOpen((a) => (a + 1) % cnt)), children: '›' }),
-          ],
-        }), document.body),
+        createPortal(
+          (0, n.jsx)(LB, {
+            i: open,
+            cnt,
+            onClose: () => setOpen(null),
+            onNav: (d2) => setOpen((a) => (a + d2 + cnt) % cnt),
+          }),
+          document.body,
+        ),
+    ],
+  })
+}
+
+// Full-screen photo viewer with zoom: pinch, wheel, double-tap, +/- buttons; drag to pan; swipe to change photo.
+function LB({ i, cnt, onClose, onNav }) {
+  let [z, setZ] = (0, s.useState)({ k: 1, x: 0, y: 0 }),
+    [dragging, setDragging] = (0, s.useState)(!1),
+    img = (0, s.useRef)(null),
+    pts = (0, s.useRef)(new Map()),
+    g = (0, s.useRef)({ d0: 0, k0: 1, sx: 0, sy: 0, x0: 0, y0: 0, moved: !1, tap: 0, swiped: !1 })
+  ;(0, s.useEffect)(() => setZ({ k: 1, x: 0, y: 0 }), [i])
+  let fit = (k, x, y) => {
+      let el = img.current
+      if (!el || k <= 1.001) return { k: 1, x: 0, y: 0 }
+      let kk = Math.min(5, k),
+        mx = (el.offsetWidth * (kk - 1)) / 2,
+        my = (el.offsetHeight * (kk - 1)) / 2
+      return { k: kk, x: Math.max(-mx, Math.min(mx, x)), y: Math.max(-my, Math.min(my, y)) }
+    },
+    zoomBy = (f) => setZ((c) => fit(c.k * f, c.x, c.y)),
+    toggle = () => setZ((c) => (c.k > 1.05 ? { k: 1, x: 0, y: 0 } : fit(2.6, 0, 0))),
+    dist = () => {
+      let a = [...pts.current.values()]
+      return Math.hypot(a[0].x - a[1].x, a[0].y - a[1].y)
+    }
+  let down = (ev) => {
+      pts.current.set(ev.pointerId, { x: ev.clientX, y: ev.clientY })
+      let G2 = g.current
+      ;((G2.moved = !1), (G2.swiped = !1), (G2.sx = ev.clientX), (G2.sy = ev.clientY), (G2.x0 = z.x), (G2.y0 = z.y))
+      2 === pts.current.size && ((G2.d0 = dist()), (G2.k0 = z.k))
+      setDragging(!0)
+      try {
+        ev.currentTarget.setPointerCapture(ev.pointerId)
+      } catch {}
+    },
+    move = (ev) => {
+      if (!pts.current.has(ev.pointerId)) return
+      pts.current.set(ev.pointerId, { x: ev.clientX, y: ev.clientY })
+      let G2 = g.current
+      if (2 === pts.current.size) {
+        ;((G2.moved = !0), setZ((c) => fit(G2.k0 * (dist() / (G2.d0 || 1)), c.x, c.y)))
+        return
+      }
+      let dx = ev.clientX - G2.sx,
+        dy = ev.clientY - G2.sy
+      ;(Math.abs(dx) + Math.abs(dy) > 8 && (G2.moved = !0), z.k > 1.001 && setZ((c) => fit(c.k, G2.x0 + dx, G2.y0 + dy)))
+    },
+    up = (ev) => {
+      let G2 = g.current,
+        dx = ev.clientX - G2.sx,
+        dy = ev.clientY - G2.sy,
+        wasPinch = pts.current.size > 1
+      pts.current.delete(ev.pointerId)
+      pts.current.size || setDragging(!1)
+      if (wasPinch) return
+      if (!G2.moved) {
+        let now = Date.now()
+        ;(now - G2.tap < 320 ? (toggle(), (G2.tap = 0)) : (G2.tap = now))
+      } else if (z.k <= 1.001 && Math.abs(dx) > 60 && Math.abs(dx) > 1.5 * Math.abs(dy)) {
+        ;((G2.swiped = !0), onNav(dx < 0 ? 1 : -1))
+      }
+    }
+  return (0, n.jsxs)('div', {
+    className: 'aa-lb',
+    role: 'dialog',
+    'aria-label': 'Photo viewer',
+    onClick: (ev) => ev.target === ev.currentTarget && onClose(),
+    onWheel: (ev) => zoomBy(Math.exp(-0.0022 * ev.deltaY)),
+    children: [
+      (0, n.jsx)('div', {
+        className: 'aa-lb-stage',
+        onClick: (ev) => ev.target === ev.currentTarget && onClose(),
+        children: (0, n.jsx)('img', {
+          ref: img,
+          src: p.moments[i],
+          alt: 'Sidharthan and Prinna',
+          draggable: !1,
+          onPointerDown: down,
+          onPointerMove: move,
+          onPointerUp: up,
+          onPointerCancel: up,
+          style: {
+            transform: `translate(${z.x}px, ${z.y}px) scale(${z.k})`,
+            transition: dragging ? 'none' : 'transform .25s ease',
+            cursor: z.k > 1.001 ? (dragging ? 'grabbing' : 'grab') : 'zoom-in',
+          },
+        }),
+      }),
+      (0, n.jsx)('button', { type: 'button', className: 'aa-lb-x', 'aria-label': 'Close', onClick: onClose, children: '×' }),
+      (0, n.jsx)('button', { type: 'button', className: 'aa-lb-a aa-lb-l', 'aria-label': 'Previous photo', onClick: () => onNav(-1), children: '‹' }),
+      (0, n.jsx)('button', { type: 'button', className: 'aa-lb-a aa-lb-r', 'aria-label': 'Next photo', onClick: () => onNav(1), children: '›' }),
+      (0, n.jsxs)('div', {
+        className: 'aa-lb-z',
+        children: [
+          (0, n.jsx)('button', { type: 'button', 'aria-label': 'Zoom out', onClick: () => zoomBy(1 / 1.5), children: '−' }),
+          (0, n.jsx)('span', { children: `${Math.round(100 * z.k)}%` }),
+          (0, n.jsx)('button', { type: 'button', 'aria-label': 'Zoom in', onClick: () => zoomBy(1.5), children: '+' }),
+        ],
+      }),
     ],
   })
 }
@@ -1773,7 +1875,7 @@ function EV({ ev, art, flip }) {
       details: `${ev.label} of Sidharthan & Prinna at ${ev.venue}.`,
       uid: `${d}-${ev.key}@zetron.tech`,
     },
-    body = (sz = 3.5, wt = 500) => ({ fontFamily: j, fontWeight: wt, fontSize: w(sz), color: y, margin: 0, lineHeight: 1.4 })
+    body = (sz = 4, wt = 600) => ({ fontFamily: j, fontWeight: wt, fontSize: w(sz), color: y, margin: 0, lineHeight: 1.4 })
   return (0, n.jsx)(q, {
     id: `aa-${ev.key}`,
     art,
@@ -1786,7 +1888,7 @@ function EV({ ev, art, flip }) {
         (0, n.jsxs)(Rv, {
           cls: 'aa-hdr',
           children: [
-            (0, n.jsx)(B, { size: 3.8, track: 0.5, color: '#6d2c40', weight: 700, delay: 0.1, children: ev.label }),
+            (0, n.jsx)(B, { size: 3.8, track: 0.5, color: '#5c1f35', weight: 700, delay: 0.1, children: ev.label }),
             (0, n.jsx)(X, {
               size: 10,
               delay: 0.4,
@@ -1819,8 +1921,8 @@ function EV({ ev, art, flip }) {
                 icon: (0, n.jsx)(V, { size: w(10) }),
                 label: 'Venue',
                 children: [
-                  (0, n.jsx)('p', { style: { ...body(4), color: u }, children: ev.venueName }),
-                  ev.venueSub && (0, n.jsx)('p', { style: { ...body(3.2, 400), fontStyle: 'italic' }, children: ev.venueSub }),
+                  (0, n.jsx)('p', { style: { ...body(4.6, 700), color: u }, children: ev.venueName }),
+                  ev.venueSub && (0, n.jsx)('p', { style: { ...body(3.6, 600), fontStyle: 'italic' }, children: ev.venueSub }),
                 ],
               }),
             }),
@@ -1834,7 +1936,7 @@ function EV({ ev, art, flip }) {
               target: '_blank',
               rel: 'noopener noreferrer',
               className: 'aa-pill aa-r',
-              style: { ...$(0.1), padding: `${w(3.2)} ${w(7)}`, fontSize: w(3) },
+              style: { ...$(0.1), padding: `${w(3.4)} ${w(7)}`, fontSize: w(3.2) },
               children: [(0, n.jsx)(V, { size: w(4) }), 'View Location'],
             }),
             (0, n.jsx)('div', {
@@ -1852,7 +1954,7 @@ function EV({ ev, art, flip }) {
                 color: x,
                 bg: 'rgba(255,247,249,.7)',
                 label: 'Add to calendar',
-                style: { fontFamily: j, fontWeight: 600, fontSize: w(2.8), letterSpacing: '.2em' },
+                style: { fontFamily: j, fontWeight: 700, fontSize: w(3), letterSpacing: '.18em' },
               }),
             }),
           ],
@@ -2024,17 +2126,25 @@ export default function () {
             (0, n.jsx)(q, {
               id: 'aa-moments',
               art: p.floral,
-              flip: 'y',
+              flip: 'x',
               label: 'Our moments',
-              children: (0, n.jsxs)(J, {
-                top: 13,
-                bottom: 12,
-                wash: !0,
+              tall: !0,
+              children: (0, n.jsxs)('div', {
+                className: 'aa-tcopy',
+                style: { paddingTop: 'calc(var(--u) * 46)', paddingBottom: 'calc(var(--u) * 54)' },
                 children: [
-                  (0, n.jsx)(B, { size: 3, track: 0.5, color: x, delay: 0.1, children: 'Our Moments' }),
-                  (0, n.jsx)(G, { w: 14, delay: 0.4, gap: 2.2 }),
-                  (0, n.jsx)(MO, {}),
-                  (0, n.jsx)(X, { size: 8, delay: 1.6, style: { marginTop: w(1) }, children: 'Made for each other' }),
+                  (0, n.jsxs)(Rv, {
+                    cls: 'aa-hdr',
+                    children: [
+                      (0, n.jsx)(B, { size: 3.8, track: 0.5, color: '#5c1f35', weight: 700, delay: 0.1, children: 'Our Moments' }),
+                      (0, n.jsx)(G, { w: 16, delay: 0.4, gap: 2.2 }),
+                    ],
+                  }),
+                  (0, n.jsx)(Rv, { children: (0, n.jsx)(MO, {}) }),
+                  (0, n.jsx)(Rv, {
+                    style: { marginTop: w(2) },
+                    children: (0, n.jsx)(X, { size: 8.4, delay: 0.3, color: '#8a3550', children: 'Made for each other' }),
+                  }),
                 ],
               }),
             }),
